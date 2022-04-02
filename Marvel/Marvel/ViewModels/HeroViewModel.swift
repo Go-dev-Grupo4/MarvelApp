@@ -15,7 +15,7 @@ class HeroViewModel {
     
     var hero: Hero?
     
-    var heroes: [ResultHero]?
+    var heroes: [ResultData]?
     
     init(services: HeroListServiceProtocol) {
         self.services = services

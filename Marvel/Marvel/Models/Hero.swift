@@ -18,13 +18,13 @@ struct Hero: Codable {
 // MARK: - DataClass
 struct DataClass: Codable {
     let offset, limit, total, count: Int?
-    let results: [ResultHero]?
+    let results: [ResultData]?
 }
 
 // MARK: - ResultStruct
-struct ResultHero: Codable {
+struct ResultData: Codable {
     let id: Int?
-    let name, description: String?
+    let name, title, description: String?
     let modified: String?
     let thumbnail: Thumbnail?
     let resourceURI: String?
