@@ -12,12 +12,6 @@ class ViewController: UIViewController {
     // MARK: - Variables
     var viewModel: HeroViewModel?
     
-    private enum ViewState {
-        case loading
-        case normal
-        case error
-    }
-    
     private var state: ViewState = .normal {
         didSet {
             DispatchQueue.main.async {
@@ -38,7 +32,6 @@ class ViewController: UIViewController {
         case .error:
             print("error")
             stopLoading()
-            // Notificar o usuário que algo deu errado
         }
     }
     
@@ -64,6 +57,14 @@ class ViewController: UIViewController {
         activity.tintColor = .red
         activity.translatesAutoresizingMaskIntoConstraints = false
         return activity
+    }()
+    
+    lazy var easterEggButton: UIBarButtonItem = {
+        let button = UIBarButtonItem(title: "lkh", style: .plain, target: self, action: #selector(callEasterEggViewController))
+        
+        button.tintColor = .red
+        
+        return button
     }()
     
     // MARK: - Life Cycle
@@ -99,6 +100,7 @@ class ViewController: UIViewController {
             collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -10),
             collectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10)
         ])
+        
         configCollectionViewLayout()
         configNavigationBar()
     }
@@ -115,6 +117,8 @@ class ViewController: UIViewController {
         navigationController?.navigationBar.standardAppearance = appearence
         navigationController?.navigationBar.compactAppearance = appearence
         navigationController?.navigationBar.scrollEdgeAppearance = appearence
+        
+        navigationItem.rightBarButtonItem = easterEggButton
     }
 
     private func delegates() {
@@ -142,17 +146,23 @@ class ViewController: UIViewController {
         activityIndicator.removeFromSuperview()
         collectionView.isHidden = false
     }
+    
+    @objc private func callEasterEggViewController() {
+        let destinationVC = EasterEggViewController()
+            
+        present(destinationVC, animated: true, completion: nil)
+    }
 }
 
 // MARK: - HeroViewModelDelegate
 
-extension ViewController: HeroViewModelDelegate {
-    func heroFetchWithSuccess() {
+extension ViewController: ResultViewModelDelegate {
+    func fetchWithSuccess() {
         print("Success")
         state = .normal
     }
     
-    func errorToFetchHero(_ error: String) {
+    func errorToFetchResult(_ error: String) {
         print("Error")
         state = .error
     }

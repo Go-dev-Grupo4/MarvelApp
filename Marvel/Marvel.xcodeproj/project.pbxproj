@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		11BFBFB841B561744FAC045B /* Pods_Marvel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A511C9078AFBB0DCCCB011AC /* Pods_Marvel.framework */; };
+		265A925327F88B3400383A88 /* EventListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265A925227F88B3400383A88 /* EventListService.swift */; };
+		265A925527F88C1B00383A88 /* EventListServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265A925427F88C1B00383A88 /* EventListServiceProtocol.swift */; };
+		265A925727F88E9E00383A88 /* UIViewController+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265A925627F88E9E00383A88 /* UIViewController+extensions.swift */; };
+		265A925A27F8964900383A88 /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265A925927F8964900383A88 /* EventTableViewCell.swift */; };
+		265A925D27F89AEA00383A88 /* EasterEggViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265A925C27F89AEA00383A88 /* EasterEggViewController.swift */; };
 		5136D54E27F879F000448D50 /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5136D54D27F879F000448D50 /* EventsViewController.swift */; };
 		5136D55127F887E900448D50 /* EventsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5136D55027F887E900448D50 /* EventsViewModel.swift */; };
 		F808F62E27F7A2A500C44D28 /* Extension+UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F808F62D27F7A2A500C44D28 /* Extension+UIView.swift */; };
@@ -23,7 +28,7 @@
 		F8D1597827F51FEE0025BA70 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8D1597727F51FEE0025BA70 /* Constants.swift */; };
 		F8D1597D27F520F20025BA70 /* URLRequestProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8D1597C27F520F20025BA70 /* URLRequestProtocol.swift */; };
 		F8D1597F27F521700025BA70 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8D1597E27F5216F0025BA70 /* HTTPMethod.swift */; };
-		F8D1598127F522580025BA70 /* HomeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8D1598027F522580025BA70 /* HomeRequest.swift */; };
+		F8D1598127F522580025BA70 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8D1598027F522580025BA70 /* Request.swift */; };
 		F8D1598427F523DC0025BA70 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8D1598327F523DC0025BA70 /* Environment.swift */; };
 		F8D1598627F526430025BA70 /* MD5.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8D1598527F526430025BA70 /* MD5.swift */; };
 		F8D1598827F528840025BA70 /* HeroListServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8D1598727F528840025BA70 /* HeroListServiceProtocol.swift */; };
@@ -32,6 +37,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		265A925227F88B3400383A88 /* EventListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListService.swift; sourceTree = "<group>"; };
+		265A925427F88C1B00383A88 /* EventListServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListServiceProtocol.swift; sourceTree = "<group>"; };
+		265A925627F88E9E00383A88 /* UIViewController+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+extensions.swift"; sourceTree = "<group>"; };
+		265A925927F8964900383A88 /* EventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
+		265A925C27F89AEA00383A88 /* EasterEggViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasterEggViewController.swift; sourceTree = "<group>"; };
 		5136D54D27F879F000448D50 /* EventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsViewController.swift; sourceTree = "<group>"; };
 		5136D55027F887E900448D50 /* EventsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsViewModel.swift; sourceTree = "<group>"; };
 		8D336164A5CFC7DDDD0D9E7B /* Pods-Marvel.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Marvel.debug.xcconfig"; path = "Target Support Files/Pods-Marvel/Pods-Marvel.debug.xcconfig"; sourceTree = "<group>"; };
@@ -52,7 +62,7 @@
 		F8D1597727F51FEE0025BA70 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		F8D1597C27F520F20025BA70 /* URLRequestProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLRequestProtocol.swift; sourceTree = "<group>"; };
 		F8D1597E27F5216F0025BA70 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
-		F8D1598027F522580025BA70 /* HomeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRequest.swift; sourceTree = "<group>"; };
+		F8D1598027F522580025BA70 /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		F8D1598327F523DC0025BA70 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		F8D1598527F526430025BA70 /* MD5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MD5.swift; sourceTree = "<group>"; };
 		F8D1598727F528840025BA70 /* HeroListServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroListServiceProtocol.swift; sourceTree = "<group>"; };
@@ -72,6 +82,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		265A925B27F89AD200383A88 /* EasterEgg */ = {
+			isa = PBXGroup;
+			children = (
+				265A925C27F89AEA00383A88 /* EasterEggViewController.swift */,
+			);
+			path = EasterEgg;
+			sourceTree = "<group>";
+		};
 		39693A7B53C7B25301A83D45 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -100,6 +118,7 @@
 		F80290C427F626D4005B70F3 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				265A925B27F89AD200383A88 /* EasterEgg */,
 				5136D54F27F87A0800448D50 /* Events */,
 				F808F63327F7BF6F00C44D28 /* Details */,
 				F808F62F27F7ABFB00C44D28 /* Home */,
@@ -111,6 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				F808F62D27F7A2A500C44D28 /* Extension+UIView.swift */,
+				265A925627F88E9E00383A88 /* UIViewController+extensions.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -127,6 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				F808F63127F7AFD500C44D28 /* CharacterCollectionViewCell.swift */,
+				265A925927F8964900383A88 /* EventTableViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -207,7 +228,9 @@
 			children = (
 				F8D1597B27F520E20025BA70 /* Request */,
 				F8D1598727F528840025BA70 /* HeroListServiceProtocol.swift */,
+				265A925427F88C1B00383A88 /* EventListServiceProtocol.swift */,
 				F8D1598C27F52A750025BA70 /* HeroListService.swift */,
+				265A925227F88B3400383A88 /* EventListService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -217,7 +240,7 @@
 			children = (
 				F8D1597C27F520F20025BA70 /* URLRequestProtocol.swift */,
 				F8D1597E27F5216F0025BA70 /* HTTPMethod.swift */,
-				F8D1598027F522580025BA70 /* HomeRequest.swift */,
+				F8D1598027F522580025BA70 /* Request.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -354,6 +377,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				265A925A27F8964900383A88 /* EventTableViewCell.swift in Sources */,
 				F808F63227F7AFD500C44D28 /* CharacterCollectionViewCell.swift in Sources */,
 				F8D1596727F51E6B0025BA70 /* ViewController.swift in Sources */,
 				F8D1598427F523DC0025BA70 /* Environment.swift in Sources */,
@@ -363,15 +387,19 @@
 				F859BD8427F65B6F0097B793 /* HeroViewModelDelegate.swift in Sources */,
 				F8D1596527F51E6B0025BA70 /* SceneDelegate.swift in Sources */,
 				F8D1598627F526430025BA70 /* MD5.swift in Sources */,
+				265A925527F88C1B00383A88 /* EventListServiceProtocol.swift in Sources */,
 				5136D55127F887E900448D50 /* EventsViewModel.swift in Sources */,
 				F808F63527F7BF8800C44D28 /* DetailsViewController.swift in Sources */,
+				265A925727F88E9E00383A88 /* UIViewController+extensions.swift in Sources */,
 				F8D1598B27F529C90025BA70 /* Hero.swift in Sources */,
 				F859BD8627F65C3F0097B793 /* HeroViewModel.swift in Sources */,
 				F8D1597D27F520F20025BA70 /* URLRequestProtocol.swift in Sources */,
 				F8D1598827F528840025BA70 /* HeroListServiceProtocol.swift in Sources */,
 				F8D1597827F51FEE0025BA70 /* Constants.swift in Sources */,
-				F8D1598127F522580025BA70 /* HomeRequest.swift in Sources */,
+				265A925327F88B3400383A88 /* EventListService.swift in Sources */,
+				F8D1598127F522580025BA70 /* Request.swift in Sources */,
 				F8D1598D27F52A750025BA70 /* HeroListService.swift in Sources */,
+				265A925D27F89AEA00383A88 /* EasterEggViewController.swift in Sources */,
 				5136D54E27F879F000448D50 /* EventsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

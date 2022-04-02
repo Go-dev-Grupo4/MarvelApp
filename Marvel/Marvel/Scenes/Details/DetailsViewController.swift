@@ -11,25 +11,6 @@ class DetailsViewController: UIViewController {
 
     var hero: ResultData?
     
-    lazy var horizontalStackView: UIStackView = {
-        let stack = UIStackView()
-        stack.axis = .horizontal
-        stack.distribution = .fillProportionally
-        stack.contentMode = .bottom
-        stack.spacing = 5
-        stack.translatesAutoresizingMaskIntoConstraints = false
-        return stack
-    }()
-    
-    lazy var eventsLabel: UILabel = {
-        let label = UILabel()
-        label.text = "E\nV\nE\nN\nT\nS"
-        label.lineBreakMode = .byWordWrapping
-        label.numberOfLines = 0
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-    
     lazy var verticalStackView: UIStackView = {
         let stack = UIStackView()
         stack.axis = .vertical
@@ -50,8 +31,10 @@ class DetailsViewController: UIViewController {
     
     lazy var descriptionLabel: UILabel = {
         let label = UILabel()
-        label.text = "BLABLALBLABLABLALBALBALBLABLABLALBLABLABLALBALBLALBALBAL"
+        label.text = "No Descritpion"
+        label.textAlignment = .center
         label.numberOfLines = 0
+        label.font = UIFont.systemFont(ofSize: 24)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -76,6 +59,9 @@ class DetailsViewController: UIViewController {
     
     @objc private func callEventsViewController() {
         let destinationVC = EventsViewController()
+        
+        destinationVC.heroId = hero?.id
+        
         navigationController?.pushViewController(destinationVC, animated: true)
     }
 
@@ -107,19 +93,17 @@ class DetailsViewController: UIViewController {
             verticalStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
             verticalStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
         ])
-//        horizontalStackView.addArrangedSubview(verticalStackView)
-//        horizontalStackView.addArrangedSubview(eventsLabel)
+        
         verticalStackView.addArrangedSubview(characterImageView)
         verticalStackView.addArrangedSubview(descriptionLabel)
 
         NSLayoutConstraint.activate([
-            eventsLabel.widthAnchor.constraint(equalToConstant: 30),
             descriptionLabel.leadingAnchor.constraint(equalTo: verticalStackView.leadingAnchor, constant: 20),
             descriptionLabel.trailingAnchor.constraint(equalTo: verticalStackView.trailingAnchor, constant: -20),
         ])
-        
-        descriptionLabel.text = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets"
-
+                
+        if let description = hero?.description, !description.isEmpty {
+            descriptionLabel.text = description
+        }
     }
-    
 }

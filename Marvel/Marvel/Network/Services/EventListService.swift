@@ -1,5 +1,5 @@
 //
-//  HeroListService.swift
+//  EventListService.swift
 //  Marvel
 //
 //  Created by Matheus Lenke on 30/03/22.
@@ -7,13 +7,14 @@
 
 import Foundation
 
-class HeroListService: HeroListServiceProtocol {
+class EventListService: EventListServiceProtocol {
+  
     let session = URLSession.shared
     
-    func execute(handler: @escaping (Result<Hero, HeroError>) -> Void) {
-        let request: Request = .home
+    func execute(heroId: Int, handler: @escaping (Result<Hero, HeroError>) -> Void) {
+        let request: Request = .events
         
-        if var baseUrl = URLComponents(string: "\(request.baseURL)/\(request.path)") {
+        if var baseUrl = URLComponents(string: "\(request.baseURL)/\(heroId)/\(request.path)") {
            
             baseUrl.query = request.queryParams
             

@@ -9,7 +9,7 @@ import Foundation
 
 class HeroViewModel {
     
-    weak var delegate: HeroViewModelDelegate?
+    weak var delegate: ResultViewModelDelegate?
     
     private var services: HeroListServiceProtocol
     
@@ -35,10 +35,10 @@ class HeroViewModel {
     private func success(hero: Hero) {
         self.hero = hero
         self.heroes = hero.data?.results
-        delegate?.heroFetchWithSuccess()
+        delegate?.fetchWithSuccess()
     }
     
     private func error(error: String) {
-        delegate?.errorToFetchHero(error)
+        delegate?.errorToFetchResult(error)
     }
 }

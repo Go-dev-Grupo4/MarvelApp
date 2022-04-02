@@ -8,8 +8,8 @@
 import Foundation
 import UIKit
 
-protocol HeroViewModelDelegate: AnyObject {
+protocol ResultViewModelDelegate: AnyObject {
     
-    func heroFetchWithSuccess()
-    func errorToFetchHero(_ error: String)
+    func fetchWithSuccess()
+    func errorToFetchResult(_ error: String)
 }
