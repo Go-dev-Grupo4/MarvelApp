@@ -71,7 +71,7 @@ class CharacterCollectionViewCell: UICollectionViewCell {
         characterStackView.addArrangedSubview(characterNameLabel)
     }
     
-    func setup(with character: ResultHero) {
+    func setup(with character: ResultData) {
         if let path = character.thumbnail?.path,
            let thumbnailExtension = character.thumbnail?.thumbnailExtension,
            let url = URL(string: "\(path)/portrait_xlarge.\(thumbnailExtension)") {

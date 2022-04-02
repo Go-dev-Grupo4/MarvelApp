@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		11BFBFB841B561744FAC045B /* Pods_Marvel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A511C9078AFBB0DCCCB011AC /* Pods_Marvel.framework */; };
+		5136D54E27F879F000448D50 /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5136D54D27F879F000448D50 /* EventsViewController.swift */; };
+		5136D55127F887E900448D50 /* EventsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5136D55027F887E900448D50 /* EventsViewModel.swift */; };
 		F808F62E27F7A2A500C44D28 /* Extension+UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F808F62D27F7A2A500C44D28 /* Extension+UIView.swift */; };
 		F808F63227F7AFD500C44D28 /* CharacterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F808F63127F7AFD500C44D28 /* CharacterCollectionViewCell.swift */; };
 		F808F63527F7BF8800C44D28 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F808F63427F7BF8800C44D28 /* DetailsViewController.swift */; };
@@ -30,6 +32,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5136D54D27F879F000448D50 /* EventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsViewController.swift; sourceTree = "<group>"; };
+		5136D55027F887E900448D50 /* EventsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsViewModel.swift; sourceTree = "<group>"; };
 		8D336164A5CFC7DDDD0D9E7B /* Pods-Marvel.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Marvel.debug.xcconfig"; path = "Target Support Files/Pods-Marvel/Pods-Marvel.debug.xcconfig"; sourceTree = "<group>"; };
 		A511C9078AFBB0DCCCB011AC /* Pods_Marvel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Marvel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBA670EE83D1B2A15F9C8473 /* Pods-Marvel.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Marvel.release.xcconfig"; path = "Target Support Files/Pods-Marvel/Pods-Marvel.release.xcconfig"; sourceTree = "<group>"; };
@@ -76,6 +80,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		5136D54F27F87A0800448D50 /* Events */ = {
+			isa = PBXGroup;
+			children = (
+				5136D54D27F879F000448D50 /* EventsViewController.swift */,
+			);
+			path = Events;
+			sourceTree = "<group>";
+		};
 		77EDE324E84832831D0A1FBF /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -88,6 +100,7 @@
 		F80290C427F626D4005B70F3 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				5136D54F27F87A0800448D50 /* Events */,
 				F808F63327F7BF6F00C44D28 /* Details */,
 				F808F62F27F7ABFB00C44D28 /* Home */,
 			);
@@ -131,6 +144,7 @@
 			children = (
 				F859BD8327F65B6F0097B793 /* HeroViewModelDelegate.swift */,
 				F859BD8527F65C3F0097B793 /* HeroViewModel.swift */,
+				5136D55027F887E900448D50 /* EventsViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -349,6 +363,7 @@
 				F859BD8427F65B6F0097B793 /* HeroViewModelDelegate.swift in Sources */,
 				F8D1596527F51E6B0025BA70 /* SceneDelegate.swift in Sources */,
 				F8D1598627F526430025BA70 /* MD5.swift in Sources */,
+				5136D55127F887E900448D50 /* EventsViewModel.swift in Sources */,
 				F808F63527F7BF8800C44D28 /* DetailsViewController.swift in Sources */,
 				F8D1598B27F529C90025BA70 /* Hero.swift in Sources */,
 				F859BD8627F65C3F0097B793 /* HeroViewModel.swift in Sources */,
@@ -357,6 +372,7 @@
 				F8D1597827F51FEE0025BA70 /* Constants.swift in Sources */,
 				F8D1598127F522580025BA70 /* HomeRequest.swift in Sources */,
 				F8D1598D27F52A750025BA70 /* HeroListService.swift in Sources */,
+				5136D54E27F879F000448D50 /* EventsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

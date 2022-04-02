@@ -9,7 +9,7 @@ import UIKit
 
 class DetailsViewController: UIViewController {
 
-    var hero: ResultHero?
+    var hero: ResultData?
     
     lazy var horizontalStackView: UIStackView = {
         let stack = UIStackView()
@@ -56,6 +56,11 @@ class DetailsViewController: UIViewController {
         return label
     }()
     
+    lazy var eventsButton: UIBarButtonItem = {
+        let button = UIBarButtonItem(title: "Events", style: .plain, target: self, action: #selector(callEventsViewController))
+        return button
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -69,6 +74,15 @@ class DetailsViewController: UIViewController {
         configureUI()
     }
     
+    @objc private func callEventsViewController() {
+        let destinationVC = EventsViewController()
+        navigationController?.pushViewController(destinationVC, animated: true)
+    }
+
+    private func configNavigationBar() {
+        navigationItem.rightBarButtonItem = eventsButton
+    }
+    
     private func configureUI() {
         
         if let hero = hero {
@@ -79,26 +93,25 @@ class DetailsViewController: UIViewController {
                 characterImageView.kf.setImage(with: url)
             }
         }
-        view.addSubview(horizontalStackView)
-        configureHorizontalStackView()
-    }
-    
-    private func configureHorizontalStackView() {
-        NSLayoutConstraint.activate([
-            horizontalStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            horizontalStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            horizontalStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
-            horizontalStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-        ])
-        horizontalStackView.addArrangedSubview(verticalStackView)
-        horizontalStackView.addArrangedSubview(eventsLabel)
+        
+        configNavigationBar()
+        
+        view.addSubview(verticalStackView)
         configureVerticalStackView()
     }
     
     private func configureVerticalStackView() {
+        NSLayoutConstraint.activate([
+            verticalStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            verticalStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            verticalStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
+            verticalStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
+        ])
+//        horizontalStackView.addArrangedSubview(verticalStackView)
+//        horizontalStackView.addArrangedSubview(eventsLabel)
         verticalStackView.addArrangedSubview(characterImageView)
         verticalStackView.addArrangedSubview(descriptionLabel)
-        
+
         NSLayoutConstraint.activate([
             eventsLabel.widthAnchor.constraint(equalToConstant: 30),
             descriptionLabel.leadingAnchor.constraint(equalTo: verticalStackView.leadingAnchor, constant: 20),
@@ -106,6 +119,7 @@ class DetailsViewController: UIViewController {
         ])
         
         descriptionLabel.text = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets"
-    }
 
+    }
+    
 }

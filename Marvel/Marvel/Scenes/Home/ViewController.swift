@@ -111,7 +111,7 @@ class ViewController: UIViewController {
     
     private func configNavigationBar() {
         navigationController?.navigationBar.prefersLargeTitles = true
-        navigationController?.navigationBar.tintColor = .label
+        navigationController?.navigationBar.tintColor = .systemBackground
         navigationController?.navigationBar.standardAppearance = appearence
         navigationController?.navigationBar.compactAppearance = appearence
         navigationController?.navigationBar.scrollEdgeAppearance = appearence
