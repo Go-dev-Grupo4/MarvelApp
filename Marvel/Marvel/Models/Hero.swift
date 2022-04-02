@@ -34,7 +34,7 @@ struct ResultHero: Codable {
     let urls: [URLElement]?
 
     enum CodingKeys: String, CodingKey {
-        case id, name
+        case id, name, title
         case description = "description"
         case modified, thumbnail, resourceURI, comics, series, stories, events, urls
     }
