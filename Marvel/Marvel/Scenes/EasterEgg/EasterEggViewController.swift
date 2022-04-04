@@ -14,7 +14,6 @@ class EasterEggViewController: UIViewController {
         label.text = "SECRET HERO"
         label.font = UIFont.systemFont(ofSize: 30, weight: .bold)
         label.textAlignment = .center
-        
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -29,7 +28,7 @@ class EasterEggViewController: UIViewController {
     
     lazy var descriptionLabel: UILabel = {
         let label = UILabel()
-        label.text = "NOSSO SUPER HEROI FAVORITO!!!\n\nDesenvolvedor iOS e entusiasta, profissional com mais de 10 anos de experiência atuando em carreiras de desenvolvedor Back-end / Mobile developer.\n\n E A QUEM SOMOS TÃO GRATOS POR ESSAS SEMANAS DE ENSINAMENTOS TÃO VALIOSO!! BRIGADÃO AMIGO!!!\n\n\n (NEM TODO HEROI USA CAPA)"
+        label.text = "NOSSO SUPER HEROI FAVORITO!!!\n\nDesenvolvedor iOS e entusiasta, profissional com mais de 10 anos de experiência atuando em carreiras de desenvolvedor.\n\n E A QUEM SOMOS TÃO GRATOS POR ESSAS SEMANAS DE ENSINAMENTOS TÃO VALIOSO!! BRIGADÃO AMIGO!!!\n\n (NEM TODO HEROI USA CAPA)"
         label.font = UIFont.systemFont(ofSize: 19)
         label.textAlignment = .center
         label.numberOfLines = 0
@@ -37,40 +36,40 @@ class EasterEggViewController: UIViewController {
         return label
     }()
     
-    lazy var contentStackView: UIStackView! = {
-        let stackView = UIStackView()
-        stackView.distribution = .fillProportionally
-        stackView.spacing = 5
-        stackView.axis = .vertical
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        
-        return stackView
-    }()
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         view.backgroundColor = .orange
         
-        configContentStackView()
+        configContent()
 
     }
     
-    private func configContentStackView() {
-        view.addSubview(contentStackView)
+    private func configContent() {
+        
+        view.addSubview(titleLabel)
+        view.addSubview(heroImage)
+        view.addSubview(descriptionLabel)
         
         NSLayoutConstraint.activate([
-            contentStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
-            contentStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 50),
-            contentStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -10),
-            contentStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -50)
+            titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 10),
+            titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
         
-        contentStackView.addArrangedSubview(titleLabel)
-        contentStackView.addArrangedSubview(heroImage)
-        contentStackView.addArrangedSubview(descriptionLabel)
-
+        NSLayoutConstraint.activate([
+            heroImage.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10),
+            heroImage.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            heroImage.heightAnchor.constraint(equalToConstant: 350)
+        ])
+        
+        NSLayoutConstraint.activate([
+            descriptionLabel.topAnchor.constraint(equalTo: heroImage.bottomAnchor, constant: 10),
+            descriptionLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
+            descriptionLabel.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -10),
+            descriptionLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10)
+        ])
+        
     }
 
     
