@@ -17,9 +17,9 @@ class HeroViewModel {
     
     var heroes: [Hero]?
     
-    var coordinator: HomeCoordinator?
+    var coordinator: MainCoordinator?
     
-    init(services: HeroListServiceProtocol, coordinator: HomeCoordinator) {
+    init(services: HeroListServiceProtocol, coordinator: MainCoordinator) {
         self.services = services
         self.coordinator = coordinator
     }

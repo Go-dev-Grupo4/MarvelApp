@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HomeCoordinator: Coordinator {
+class MainCoordinator: Coordinator {
     
     private(set) var childCoordinators: [Coordinator] = []
     

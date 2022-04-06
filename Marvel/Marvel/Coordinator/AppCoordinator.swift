@@ -25,7 +25,7 @@ class AppCoordinator: Coordinator {
 
     private func flowHome() {
         
-        let homeCoordinator = HomeCoordinator.init(navigationController: navigationController)
+        let homeCoordinator = MainCoordinator.init(navigationController: navigationController)
         childCoordinators.append(homeCoordinator)
         
         homeCoordinator.start()

@@ -16,7 +16,7 @@ class EventsViewModel {
 
     var events: [Hero]?
     
-    var coordinator: HomeCoordinator?
+    var coordinator: MainCoordinator?
 
     init(services: EventListServiceProtocol) {
         self.services = services

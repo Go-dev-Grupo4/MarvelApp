@@ -56,7 +56,7 @@ class CharacterCollectionViewCell: UICollectionViewCell {
         
         layer.cornerRadius = 15
         clipsToBounds = true
-        backgroundColor = .red
+        backgroundColor = Color.background
         configCharacterStackView()
         configCharacterImageView()
         configCharacterNameLabel()
