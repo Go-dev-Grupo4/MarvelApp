@@ -10,7 +10,7 @@ import Foundation
 enum Request : URLRequestProtocol {
     
     case home
-    case details
+    case details(String)
     case events
     
     /// The API's base url
@@ -50,8 +50,8 @@ enum Request : URLRequestProtocol {
         case .home:
             let hash = HashMD5Hex(string: "\(timestamp)\(Environment.privateKey)\(Environment.publicKey)")
             return "limit=30&ts=\(timestamp)&apikey=\(Environment.publicKey)&hash=\(hash)"
-        case .details:
-            return "details=124010"
+        case .details(let detail):
+            return "details=\(detail)"
         case .events:
             let hash = HashMD5Hex(string: "\(timestamp)\(Environment.privateKey)\(Environment.publicKey)")
             return "ts=\(timestamp)&apikey=\(Environment.publicKey)&hash=\(hash)"
