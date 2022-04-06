@@ -60,7 +60,7 @@ class HomeViewController: UIViewController {
     }()
     
     lazy var easterEggButton: UIBarButtonItem = {
-        let button = UIBarButtonItem(title: "lkh", style: .plain, target: self, action: #selector(callEasterEggViewController))
+        let button = UIBarButtonItem(title: "🦇", style: .plain, target: self, action: #selector(callEasterEggViewController))
         
         button.tintColor = Color.background
         
