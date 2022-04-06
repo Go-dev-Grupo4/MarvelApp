@@ -13,12 +13,15 @@ class HeroViewModel {
     
     private var services: HeroListServiceProtocol
     
-    var hero: Hero?
+    var hero: ApiResponse?
     
-    var heroes: [ResultData]?
+    var heroes: [Hero]?
     
-    init(services: HeroListServiceProtocol) {
+    var coordinator: HomeCoordinator?
+    
+    init(services: HeroListServiceProtocol, coordinator: HomeCoordinator) {
         self.services = services
+        self.coordinator = coordinator
     }
     
     func fetchHero() {
@@ -32,7 +35,19 @@ class HeroViewModel {
         }
     }
     
-    private func success(hero: Hero) {
+    func selectedHero(hero: Hero) {
+        coordinator?.flowDetail(with: hero)
+    }
+    
+    func showEvents(hero: Hero) {
+        coordinator?.flowEvents(with: hero)
+    }
+    
+    func showEasterEgg() {
+        coordinator?.flowEaterEgg()
+    }
+    
+    private func success(hero: ApiResponse) {
         self.hero = hero
         self.heroes = hero.data?.results
         delegate?.fetchWithSuccess()

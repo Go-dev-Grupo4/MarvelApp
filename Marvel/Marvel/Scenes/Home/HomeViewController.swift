@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class HomeViewController: UIViewController {
     
     // MARK: - Variables
     var viewModel: HeroViewModel?
@@ -45,8 +45,8 @@ class ViewController: UIViewController {
     
     lazy var appearence: UINavigationBarAppearance! = {
         var appearence = UINavigationBarAppearance()
-        appearence.shadowColor = .red
-        appearence.backgroundColor = .red
+        appearence.shadowColor = Color.background
+        appearence.backgroundColor = Color.background
         appearence.titleTextAttributes = [.foregroundColor: UIColor.systemBackground]
         appearence.largeTitleTextAttributes = [.foregroundColor: UIColor.systemBackground]
         return appearence
@@ -62,7 +62,7 @@ class ViewController: UIViewController {
     lazy var easterEggButton: UIBarButtonItem = {
         let button = UIBarButtonItem(title: "lkh", style: .plain, target: self, action: #selector(callEasterEggViewController))
         
-        button.tintColor = .red
+        button.tintColor = Color.background
         
         return button
     }()
@@ -85,6 +85,10 @@ class ViewController: UIViewController {
         fetchHero()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        configNavigationBar()
+    }
+    
     // MARK: - Private functions
     
     private func registerCell() {
@@ -102,7 +106,6 @@ class ViewController: UIViewController {
         ])
         
         configCollectionViewLayout()
-        configNavigationBar()
     }
     
     private func configCollectionViewLayout() {
@@ -148,15 +151,15 @@ class ViewController: UIViewController {
     }
     
     @objc private func callEasterEggViewController() {
-        let destinationVC = EasterEggViewController()
-            
-        present(destinationVC, animated: true, completion: nil)
+        
+        viewModel?.showEasterEgg()
+        
     }
 }
 
 // MARK: - HeroViewModelDelegate
 
-extension ViewController: ResultViewModelDelegate {
+extension HomeViewController: ResultViewModelDelegate {
     func fetchWithSuccess() {
         print("Success")
         state = .normal
@@ -168,19 +171,16 @@ extension ViewController: ResultViewModelDelegate {
     }
 }
 
-extension ViewController: UICollectionViewDelegate {
+extension HomeViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let detailsViewController = DetailsViewController()
+        guard let hero = viewModel?.heroes?[indexPath.item] else { return }
         
-        detailsViewController.hero = viewModel?.heroes?[indexPath.item]
-        
-        navigationController?.pushViewController(detailsViewController, animated: true)
+        viewModel?.selectedHero(hero: hero)
     }
-    
 }
 
-extension ViewController: UICollectionViewDataSource {
+extension HomeViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CharacterCollectionViewCell.identifier, for: indexPath) as? CharacterCollectionViewCell else { return UICollectionViewCell() }
         
@@ -197,7 +197,7 @@ extension ViewController: UICollectionViewDataSource {
     }
 }
 
-extension ViewController: UICollectionViewDelegateFlowLayout {
+extension HomeViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = view.bounds.width * 0.45
         return CGSize(width: width, height: width * 1.5 + 22.5)

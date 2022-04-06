@@ -14,7 +14,9 @@ class EventsViewModel {
 
     var heroId: Int?
 
-    var events: [ResultData]?
+    var events: [Hero]?
+    
+    var coordinator: HomeCoordinator?
 
     init(services: EventListServiceProtocol) {
         self.services = services
@@ -35,7 +37,7 @@ class EventsViewModel {
         }
     }
 
-    private func success(events: Hero) {
+    private func success(events: ApiResponse) {
         self.events = events.data?.results
         delegate?.fetchWithSuccess()
     }

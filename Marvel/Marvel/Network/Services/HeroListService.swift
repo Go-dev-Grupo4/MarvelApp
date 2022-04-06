@@ -10,7 +10,7 @@ import Foundation
 class HeroListService: HeroListServiceProtocol {
     let session = URLSession.shared
     
-    func execute(handler: @escaping (Result<Hero, HeroError>) -> Void) {
+    func execute(handler: @escaping (Result<ApiResponse, HeroError>) -> Void) {
         let request: Request = .home
         
         if var baseUrl = URLComponents(string: "\(request.baseURL)/\(request.path)") {
@@ -32,7 +32,7 @@ class HeroListService: HeroListServiceProtocol {
                         
                         let decoder = JSONDecoder()
                         
-                        let responseData = try decoder.decode(Hero.self, from: jsonData)
+                        let responseData = try decoder.decode(ApiResponse.self, from: jsonData)
                         
                         handler(.success(responseData))
                     } catch (let error) {

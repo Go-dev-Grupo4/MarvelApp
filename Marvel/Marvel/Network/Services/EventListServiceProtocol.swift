@@ -18,6 +18,6 @@ enum EventError: Error {
 
 protocol EventListServiceProtocol: AnyObject {
     
-    func execute(heroId: Int, handler: @escaping(Result<Hero, HeroError>) -> Void)
+    func execute(heroId: Int, handler: @escaping(Result<ApiResponse, HeroError>) -> Void)
     
 }

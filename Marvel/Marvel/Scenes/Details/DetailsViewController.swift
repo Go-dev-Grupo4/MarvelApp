@@ -9,10 +9,15 @@ import UIKit
 
 class DetailsViewController: UIViewController {
 
-    var hero: ResultData?
+    var hero: Hero?
+    
+    var viewModel: HeroViewModel?
     
     lazy var verticalStackView: UIStackView = {
         let stack = UIStackView()
+        
+        stack.layer.cornerRadius = 50
+        stack.clipsToBounds = true
         stack.axis = .vertical
         stack.distribution = .fillEqually
         stack.spacing = 10
@@ -23,6 +28,9 @@ class DetailsViewController: UIViewController {
     
     lazy var characterImageView: UIImageView = {
         let image = UIImageView()
+        
+        image.layer.cornerRadius = 10
+        image.clipsToBounds = true
         image.image = UIImage(systemName: "photo.artframe")
         image.contentMode = .scaleAspectFit
         image.translatesAutoresizingMaskIntoConstraints = true
@@ -31,7 +39,7 @@ class DetailsViewController: UIViewController {
     
     lazy var descriptionLabel: UILabel = {
         let label = UILabel()
-        label.text = "No Descritpion"
+        label.text = "No Description"
         label.textAlignment = .center
         label.numberOfLines = 0
         label.font = UIFont.systemFont(ofSize: 24)
@@ -44,29 +52,50 @@ class DetailsViewController: UIViewController {
         return button
     }()
     
+    lazy var appearence: UINavigationBarAppearance! = {
+        var appearence = UINavigationBarAppearance()
+        appearence.shadowColor = Color.background
+        appearence.backgroundColor = Color.background
+        appearence.titleTextAttributes = [.foregroundColor: UIColor.systemBackground]
+        appearence.largeTitleTextAttributes = [.foregroundColor: UIColor.systemBackground]
+        return appearence
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let gradient = CAGradientLayer()
 
         gradient.frame = view.safeAreaLayoutGuide.layoutFrame
-        gradient.colors = [UIColor.red.cgColor, UIColor(red: 12/255, green: 34/255, blue: 56/255, alpha: 1).cgColor]
+        gradient.colors = [
+            UIColor.red.cgColor
+            , UIColor(red: 12/255, green: 34/255, blue: 56/255, alpha: 1).cgColor]
 
-        view.layer.insertSublayer(gradient, at: 0)
+        view.layer.insertSublayer(gradient, at: 250)
 
         configureUI()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        configNavigationBar()
+    }
     @objc private func callEventsViewController() {
-        let destinationVC = EventsViewController()
-        
-        destinationVC.heroId = hero?.id
-        
-        navigationController?.pushViewController(destinationVC, animated: true)
+
+        guard let hero = hero else {
+            return
+        }
+
+        viewModel?.showEvents(hero: hero)
     }
 
     private func configNavigationBar() {
         navigationItem.rightBarButtonItem = eventsButton
+        
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationBar.tintColor = .systemBackground
+        navigationController?.navigationBar.standardAppearance = appearence
+        navigationController?.navigationBar.compactAppearance = appearence
+        navigationController?.navigationBar.scrollEdgeAppearance = appearence
     }
     
     private func configureUI() {
@@ -79,9 +108,7 @@ class DetailsViewController: UIViewController {
                 characterImageView.kf.setImage(with: url)
             }
         }
-        
-        configNavigationBar()
-        
+                
         view.addSubview(verticalStackView)
         configureVerticalStackView()
     }
@@ -89,7 +116,7 @@ class DetailsViewController: UIViewController {
     private func configureVerticalStackView() {
         NSLayoutConstraint.activate([
             verticalStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            verticalStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            verticalStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
             verticalStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
             verticalStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
         ])

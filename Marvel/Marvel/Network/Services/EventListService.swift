@@ -11,7 +11,7 @@ class EventListService: EventListServiceProtocol {
   
     let session = URLSession.shared
     
-    func execute(heroId: Int, handler: @escaping (Result<Hero, HeroError>) -> Void) {
+    func execute(heroId: Int, handler: @escaping (Result<ApiResponse, HeroError>) -> Void) {
         let request: Request = .events
         
         if var baseUrl = URLComponents(string: "\(request.baseURL)/\(heroId)/\(request.path)") {
@@ -33,7 +33,7 @@ class EventListService: EventListServiceProtocol {
                         
                         let decoder = JSONDecoder()
                         
-                        let responseData = try decoder.decode(Hero.self, from: jsonData)
+                        let responseData = try decoder.decode(ApiResponse.self, from: jsonData)
                         
                         handler(.success(responseData))
                     } catch (let error) {

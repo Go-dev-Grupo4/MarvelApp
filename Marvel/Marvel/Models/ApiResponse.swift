@@ -8,7 +8,7 @@
 import Foundation
 
 // MARK: - Hero
-struct Hero: Codable {
+struct ApiResponse: Codable {
     let code: Int?
     let status, copyright, attributionText, attributionHTML: String?
     let etag: String?
@@ -18,11 +18,11 @@ struct Hero: Codable {
 // MARK: - DataClass
 struct DataClass: Codable {
     let offset, limit, total, count: Int?
-    let results: [ResultData]?
+    let results: [Hero]?
 }
 
 // MARK: - ResultStruct
-struct ResultData: Codable {
+struct Hero: Codable {
     let id: Int?
     let name, title, description: String?
     let modified: String?

@@ -11,6 +11,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
+    var appCoordinator: Coordinator?
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
@@ -19,15 +20,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         window = UIWindow(windowScene: windowScene)
         
-        let service = HeroListService()
+//        let service = HeroListService()
+//
+//        let heroViewModel = HeroViewModel(services: service)
+//
+//        let heroViewController = ViewController()
+//        heroViewController.viewModel = heroViewModel
         
-        let heroViewModel = HeroViewModel(services: service)
+        let navigationController = UINavigationController()
+        appCoordinator = AppCoordinator(navigationController: navigationController)
+        appCoordinator?.start()
         
-        let heroViewController = ViewController()
-        heroViewController.viewModel = heroViewModel
-        
-        window?.rootViewController = UINavigationController(rootViewController: heroViewController)
-        
+        window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
     }
 

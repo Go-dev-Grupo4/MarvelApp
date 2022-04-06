@@ -109,7 +109,7 @@ class EventsViewController: UIViewController {
         guard let heroId = heroId else {
             return
         }
-        print(heroId)
+        
         viewModel = EventsViewModel(services: EventListService())
         
         viewModel?.delegate = self

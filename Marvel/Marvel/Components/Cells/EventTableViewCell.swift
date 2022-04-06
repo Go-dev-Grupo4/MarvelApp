@@ -90,7 +90,7 @@ class EventTableViewCell: UITableViewCell {
     }
 
     // MARK: Public Methods
-    func setupUI(event: ResultData) {
+    func setupUI(event: Hero) {
         
         configEventImageView(event: event)
         configEventContentStackView(with: event)
@@ -98,7 +98,7 @@ class EventTableViewCell: UITableViewCell {
     
     // MARK: Private Methods for config components
 
-    private func configEventImageView(event: ResultData) {
+    private func configEventImageView(event: Hero) {
       
         addSubview(eventImageView)
         
@@ -116,7 +116,7 @@ class EventTableViewCell: UITableViewCell {
         }
     }
     
-    private func configEventContentStackView(with event: ResultData) {
+    private func configEventContentStackView(with event: Hero) {
         addSubview(eventContentStackView)
         
         NSLayoutConstraint.activate([
@@ -132,13 +132,13 @@ class EventTableViewCell: UITableViewCell {
         configEventMessageContentStackView(with: event)
     }
     
-    private func configEventHeaderContentStackView(with event: ResultData) {
+    private func configEventHeaderContentStackView(with event: Hero) {
         eventHeaderContentStackView.addArrangedSubview(titleLabel)
         
         configTitleLabel(with: event.title ?? "Title")
     }
     
-    private func configEventMessageContentStackView(with event: ResultData) {
+    private func configEventMessageContentStackView(with event: Hero) {
         eventMessageContentStackView.addArrangedSubview(descriptionLabel)
         
         configDescriptionLabel(with: event.description ?? "No description")

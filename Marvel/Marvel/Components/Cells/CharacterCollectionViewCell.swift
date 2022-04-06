@@ -14,7 +14,7 @@ class CharacterCollectionViewCell: UICollectionViewCell {
     lazy var characterStackView: UIStackView = {
         let view = UIStackView()
         view.axis = .vertical
-        view.spacing = 0
+        view.spacing = 5
         view.distribution = .fillProportionally
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
@@ -22,6 +22,8 @@ class CharacterCollectionViewCell: UICollectionViewCell {
     
     lazy var characterImageView: UIImageView = {
         let view = UIImageView(frame: .zero)
+        view.layer.cornerRadius = 15
+        view.clipsToBounds = true
         view.contentMode = .scaleAspectFit
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
@@ -29,9 +31,13 @@ class CharacterCollectionViewCell: UICollectionViewCell {
     
     lazy var characterNameLabel: UILabel = {
         let view = UILabel()
+        
+        view.layer.cornerRadius = 8
+        view.backgroundColor = .tertiaryLabel
+        view.clipsToBounds = true
         view.textAlignment = .center
         view.numberOfLines = 1
-        view.font = UIFont.systemFont(ofSize: 19)
+        view.font = UIFont.systemFont(ofSize: 20, weight: .bold)
         view.textColor = .systemBackground
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
@@ -47,6 +53,9 @@ class CharacterCollectionViewCell: UICollectionViewCell {
     }
     
     private func configUI() {
+        
+        layer.cornerRadius = 15
+        clipsToBounds = true
         backgroundColor = .red
         configCharacterStackView()
         configCharacterImageView()
@@ -71,7 +80,7 @@ class CharacterCollectionViewCell: UICollectionViewCell {
         characterStackView.addArrangedSubview(characterNameLabel)
     }
     
-    func setup(with character: ResultData) {
+    func setup(with character: Hero) {
         if let path = character.thumbnail?.path,
            let thumbnailExtension = character.thumbnail?.thumbnailExtension,
            let url = URL(string: "\(path)/portrait_xlarge.\(thumbnailExtension)") {
